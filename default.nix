@@ -1,10 +1,11 @@
 { pkgs ? import <nixpkgs> { }, lib ? pkgs.lib, }:
 let
   rustPlatform = pkgs.rustPlatform;
-  crmRepo = builtins.fetchGit {
-    url =
-      "https://github.com/semantic-release-cargo/semantic-release-cargo.git";
-    ref = "master";
+  crmRepo = pkgs.fetchFromGitHub {
+    owner = "semantic-release-cargo";
+    repo = "semantic-release-cargo";
+    rev = "master";
+    sha256 = "sha256-rGIwPjA3e49s7hu/2S6jlRnKSH1JTHzR+PJBD5GjZQU=";
   };
 in rustPlatform.buildRustPackage {
   pname = "semantic-release-cargo";
